@@ -15,7 +15,8 @@ Using KAFKA:
 - The Kafka Consumer which is deployed on a Pod, is connected to the Kafka Broker, all the messages that are produced in the
 "test" topic from the Producers inside the Services, the Kafka Consumer, takes them and pushes them into the gRPC as PROTOBUFs
 
-Kafka is good for Asynchronous messaging communication between the microservices and if deployed as a HA, it can handle huge load of data.
+Kafka is good for Asynchronous messaging communication between the microservices and if deployed as a HA,
+it can handle huge load of data.
 
 
 Using gRCP:
@@ -27,3 +28,10 @@ Using gRCP:
 With this design the load of the services is distributed accross the components of architecture,
 and we can achieve more security in terms of persisiting data to the DB as we can enforce more secure formats through gRCP.
 Also in case of high load of traffic INTO the system, our kafka deployment helps us to better handle that load, we can make it more high availability architecture.
+So this helps us scale easier in terms of User increase.
+
+In this case we now don't have all the requests coming to one Instance as that of Monolith, which could hace caused high load,
+now we have a split of request in the three microservices, and both the location and person service have just to push the data to the kafka
+boker and now need to persist that, kafka consumers take care of that. So the separation of concern and load processing is not one one service now.
+For more, we can increase here in regards to handling large volume of data, is we can increase the number of workers for each service,
+numbers of workers for kafka consumers, and have a cluster of kafka broker setup.

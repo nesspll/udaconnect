@@ -6,7 +6,14 @@ NOTE: This is deployed on Docker Desktop - if u use other, make sure to update t
 NOTE: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
 <hr>
 
-****Deploying Kafka****:
+##  **STEP 1 : INSTALL DOCKER-DESKTOP for WINDOWS.**
+Link: https://www.docker.com/products/docker-desktop
+Once INSTALLED - enable Kubernetes.
+
+## STEP 2: INSTALL HELM
+Link: https://helm.sh/docs/intro/install/
+
+## STEP 3: Deploying Kafka:
  
 
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
@@ -16,9 +23,30 @@ NOTE: The first part is related to the Monolith version of this application, its
 `helm install my-release bitnami/kafka`
 <hr>
 
-**From ROOT DIR apply**:
+## STEP4:
+**cd to deployment_files**:
 
-`kubectl apply -f deployment_files`
+`cd deployment_files/`
+
+
+`kubectl apply -f db-configmap.yaml`
+
+`kubectl apply -f db-secret.yaml`
+
+`kubectl apply -f postgres.yaml`
+
+`kubectl apply -f grpc.yaml`
+
+`kubectl apply -f udaconnect-kafka-consumer.yaml`
+
+`kubectl apply -f connection-api.yaml`
+
+`kubectl apply -f person-api.yaml`
+
+`kubectl apply -f location-api.yaml`
+
+`kubectl apply -f frontend-app.yaml`
+
 
 **Seed the DB:**
 
