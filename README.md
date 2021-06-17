@@ -1,6 +1,11 @@
 # UdaConnect
 ## Part 2: Microservices and Kafka/gRPC
+## IF you Use K3S
 
+When you install k3s do not install the latest version of k3s, there is an issue with CreateContainerError. Refer to this link https://github.com/rancher/k3os/issues/702
+
+Instead install the lower version with this parameter: https://medium.com/@madushagunasekara/downgrade-k3s-version-b8cf3fdbb718
+<hr>
 NOTE: This is deployed on Docker Desktop - if u use other, make sure to update the hostnames properly on Kafka Consumer and gRCP
 
 NOTE: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
