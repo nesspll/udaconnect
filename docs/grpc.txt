@@ -1,0 +1,7 @@
+On my deployment of gRPC in Docker Desktop K8s the host is localhost:30033 - so depending how you deploy this project this might change for you.
+
+In the Project folder "modules" you have the grpc folder, and there is a "writer.py" that you can run once you have the gRPC server running.
+
+Once you run the writer, you can refresh the website and a Person should show there.
+
+This is for testing, the Kafka Consumer does the gRPC calls in the project.
