@@ -1,5 +1,6 @@
 # UdaConnect
-##Part 2: Microservices and Kafka/gRPC
+## Part 2: Microservices and Kafka/gRPC
+
 Note: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
 <hr>
 
