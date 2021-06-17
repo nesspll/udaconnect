@@ -1,7 +1,9 @@
 # UdaConnect
 ## Part 2: Microservices and Kafka/gRPC
 
-Note: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
+NOTE: This is deployed on Docker Desktop - if u use other, make sure to update the hostnames properly on Kafka Consumer and gRCP
+
+NOTE: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
 <hr>
 
 ****Deploying Kafka****:
