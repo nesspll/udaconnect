@@ -4,7 +4,7 @@ import json
 import ast
 import services_pb2
 import services_pb2_grpc
-
+import os
 from dataclasses import dataclass
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -25,6 +25,12 @@ from marshmallow import Schema, fields
 from marshmallow_sqlalchemy.convert import ModelConverter as BaseModelConverter
 
 base = declarative_base()
+
+DB_USERNAME = os.environ["DB_USERNAME"]
+DB_PASSWORD = os.environ["DB_PASSWORD"]
+DB_HOST = os.environ["DB_HOST"]
+DB_PORT = os.environ["DB_PORT"]
+DB_NAME = os.environ["DB_NAME"]
 
 class Person(base):
     __tablename__ = "person"
@@ -99,7 +105,7 @@ class CallServicer(services_pb2_grpc.CallServiceServicer):
 		new_person.first_name = request.first_name
 		new_person.last_name = request.last_name
 		new_person.company_name = request.company_name
-		db_string = "postgres://ct_admin:wowimsosecure@host.docker.internal:32393/geoconnections"
+		db_string = f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 		db = create_engine(db_string)
 		Session = sessionmaker(bind=db)
 		session = Session()
@@ -121,7 +127,7 @@ class CallServicer(services_pb2_grpc.CallServiceServicer):
 			new_location.creation_time = datetime.now()
 		new_location.coordinate = ST_Point(request.latitude, request.longitude)
 
-		db_string = "postgres://ct_admin:wowimsosecure@host.docker.internal:32393/geoconnections"
+		db_string = f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 		db = create_engine(db_string)
 		Session = sessionmaker(bind=db)
 		session = Session()

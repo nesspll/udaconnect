@@ -11,14 +11,14 @@ import grpc
 
 
 def create_person(req):
-    channel = grpc.insecure_channel('kubernetes.docker.internal:30033')
+    channel = grpc.insecure_channel('grpc-api:30033')
     stub = services_pb2_grpc.CallServiceStub(channel)
     person = PersonMessage(first_name=req["first_name"] , last_name=req["last_name"], company_name=req["company_name"])
     stub.create_person(person)
 
 
 def create_location(req):
-    channel = grpc.insecure_channel('kubernetes.docker.internal:30033')
+    channel = grpc.insecure_channel('grpc-api:30033')
     stub = services_pb2_grpc.CallServiceStub(channel)
     location = LocationMessage(person_id=req["person_id"], creation_time=req["creation_time"],latitude=req["latitude"],longitude=req["longitude"])
     stub.create_location(location)
