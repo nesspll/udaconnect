@@ -1,25 +1,27 @@
 # UdaConnect
 ## Part 2: Microservices and Kafka/gRPC
-## IF you Use K3S
 
-When you install k3s do not install the latest version of k3s, there is an issue with CreateContainerError. Refer to this link https://github.com/rancher/k3os/issues/702
 
-Instead install the lower version with this parameter: https://medium.com/@madushagunasekara/downgrade-k3s-version-b8cf3fdbb718
-<hr>
-NOTE: This is deployed on Docker Desktop - if u use other, make sure to update the hostnames properly on Kafka Consumer and gRCP
+## STEP 1: Make sure you have these installed
+- Helm 3
+- Kubectl 
+- Virtual Box
+- Vagrant
 
-NOTE: The first part is related to the Monolith version of this application, its the starter project, while this second part is the same project in Microservices and using Kafka for messaging and gRPC for DB calls.
-<hr>
+## STEP 2: CD into the ROOT DIR and Apply
+- vagrant up
+- vagrant ssh
 
-##  **STEP 1 : INSTALL DOCKER-DESKTOP for WINDOWS.**
-Link: https://www.docker.com/products/docker-desktop
-Once INSTALLED - enable Kubernetes.
+password: vagrant
 
-## STEP 2: INSTALL HELM
-Link: https://helm.sh/docs/intro/install/
+vagrant@master/> sudo cat /etc/rancher/k3s/k3s.yaml
+
+Copy the results of the yaml file to the .kube/config
+
+Then you will be able to access K8s resources in the Vagrant box.
+
 
 ## STEP 3: Deploying Kafka:
- 
 
 `helm repo add bitnami https://charts.bitnami.com/bitnami`
 
